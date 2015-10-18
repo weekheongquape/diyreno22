@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="msapplication-tap-highlight" content="no" />
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
+<script>
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	
+	function showdetails(coid)
+	{
+	   /*$("#infodiv").load( "http://www.diyreno.sg/getdetail.php?sid="+coid,function(){
+			$('#infodiv').trigger('create');});*/
+	    
+		window.location.href="redirect.html?url=http://www.diyreno.sg/getdetail.php?sid="+coid;
+	}	
+	function viewproducts(coid)
+	{
+		/*$("#infodiv").load("http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid,function(){
+			$('#infodiv').trigger('create');
+		});*/
+		window.location.href="redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid;
+	}	
+	  
+ $(document).ready(function(){
+     $("#infodiv").load( "http://www.diyreno.sg/getco.php?catid="+getParameterByName('catid'),function(){
+$('#infodiv').trigger('create');});
+ });	
+	
+
+
+</script>
+<style>
+.my_icon_wrapper {
+	float: left;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header" data-position="fixed"><a href="merchants.html" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+    <h1>DIY RENO</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div id="infodiv"></div>
+  </div>
+  <div data-role="footer" data-position="fixed">
+    <h4>Copyright 2014 DIY RENO</h4>
+  </div>
+  <!-- /footer --> 
+  
+</div>
+<!-- /page --> 
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

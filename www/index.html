@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>  
+<script type="text/javascript" charset="utf-8">
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+$(document).ready(function() {
+    //document.addEventListener("deviceready", onDeviceReady, true);
+	/* 
+    $.ajax({
+		url:'http://www.diyreno.sg/promo/index.php/reno/loaddeals',
+		success: function(request)
+		{
+			$('#populate').html(request);
+		}
+	});**/
+		$.post('http://www.diyreno.sg/promo/index.php/reno/loadmenu',{},function(request){$('#populate').html(request);});
+		$('#subtabs > li').click(function(e) {
+			$(this).addClass('active').siblings('li').removeClass('active');
+			var id = $(this).attr('id');
+			$('.tab1,.tab2,.tab3').fadeOut();
+			$('.'+id).fadeIn();
+		});
+		$.post('http://www.diyreno.sg/promo/index.php/reno/getfeaturedproducts',{},function(request){$('#products').html(request);});
+		$.post('http://www.diyreno.sg/promo/index.php/reno/getadvertwithus',{},function(request){$('#advertwithus').html(request);});
+		$.post('http://www.diyreno.sg/promo/index.php/reno/getfeaturedpc',{},function(request){$('#featuredpc').html(request);});
+		
+		var value = window.localStorage.getItem("userid");
+		if(value > 0)
+		{
+			$('#logintab').html('Logout');
+			$('#logintab').attr('href','#');
+			$('#logintab').attr('onclick','logout()');
+			$('#shortlisttab').show();
+			$('#shortlisttab').attr('href','redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/mobileshortlistedproducts/'+value);
+		}
+		setInterval(function(){
+			if($('#subtabs > li.active').next('li').length){
+				$('#subtabs > li.active').next('li').trigger('click');
+			}
+			else
+			{
+				$('#subtabs > li:first-child').trigger('click');
+			}
+		}, 10000);
+		
+});
+	$(document).ajaxStop(function() {
+			$.mobile.loading('hide');
+			$.mobile.hidePageLoadingMsg();
+		});
+		 function onDeviceReady() { 
+			 
+		 }
+		 function logout()
+		 {
+			 if(confirm("Are you sure?")){
+				 window.localStorage.clear();
+				 window.location.reload();
+			 }
+		 }
+</script>
+<style>
+	#subtabs{list-style-type:none;padding:0;margin:0;width:100%;font-size:12px;display:table;}
+	#subtabs > li{padding:2px;border:1px solid #ccc;border-radius: 4px 4px 0 0;bottom:0;font-weight:normal;display:table-cell;vertical-align:middle;text-align:center;background:#EF474D;color:#FFF;}
+	#subtabs > li.active{background:#FFF;color:#000;border-bottom:0;}
+	.tab1,
+	.tab2,
+	.tab3
+	{
+		border:1px solid #ccc; padding:8px;border-top:0;background:#FFF;
+	}
+	#advertwithus,.tab2,.tab3{padding:0;border-bottom:0;}
+	#submenu{min-height:500px;height:auto;}
+</style>
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>DIY RENO</h1>
+       
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+    <div align="center"><img src="images/logo.png" width="60%">
+    <br>
+		<a href="promotions.html" class="ui-btn" data-ajax="false" style="background:#4AC5F2;color:#FFF"> Great Deals</a>
+      	<a id="shortlisttab" href="redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/mobileshortlistedproducts/" class="ui-btn" data-ajax="false" style="display:none;">Shortlisted Products</a>
+        <a href="merchants.html" class="ui-btn" data-ajax="false">Merchant</a>
+        <a href="project_coordinator.html" class="ui-btn" data-ajax="false">Project Coordinator</a>
+      	<a id="logintab" href="login.html" class="ui-btn" data-ajax="false">Login</a>
+        
+        <div id="submenu">
+        	<ul id="subtabs">
+            	<li id="tab1" class="active">Advertise with Us</li>
+            	<li id="tab2">Featured <br/>Products</li>
+            	<li id="tab3">Featured Project<br/>Coordinators</li>
+            </ul>
+            <div style="clear:both;"></div>
+        	<div class="tab1" id="advertwithus">
+            	<h4>Advert with Us</h4>
+            </div>
+        	<div id="products" class="tab2" style="display:none;">
+            	<h4>Featured Products</h4>
+            
+            </div>
+        	<div class="tab3" style="display:none;" id="featuredpc">
+            	<h4>Featured Project Coordinators</h4>
+            
+            </div>
+        </div>
+        <a href="aboutdiy.html" class="ui-btn" data-ajax="false">About Us</a>
+        <div id="populate">
+        	<!--Other menu-->	
+        </div>
+    <div style="width:90%;text-align:justify;">DIYRENO.sg is the first and only platform that connect residential and commercial property owners directly with contractors or suppliers of specialized trade bypassing the middleman to fit out their property, thus, resulting in lower cost for owners and higher profit for contractors and suppliers.</div>
+        <script>
+        	
+        </script>
+        
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

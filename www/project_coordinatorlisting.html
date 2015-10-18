@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
+<script>
+$(document).ready(function() {
+    //document.addEventListener("deviceready", onDeviceReady, true);
+	/* 
+    $.ajax({
+		url:'http://www.diyreno.sg/promo/index.php/reno/loaddeals',
+		success: function(request)
+		{
+			$('#populate').html(request);
+		}
+	});**/
+		$.post('http://www.diyreno.sg/promo/index.php/reno/listpc/'+getParameterByName('catid'),{},function(request){$('#populate').html(request);});
+		
+	//alert('test');      
+});
+
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	
+	$(document).ajaxStop(function() {
+			$.mobile.loading('hide');
+			$.mobile.hidePageLoadingMsg();
+		});
+</script>
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed"><a data-ajax="false" href="javascript:window.history.back()" data-icon="home" class="ui-btn-right">Back</a>
+		<h1>DIY RENO</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+    
+    
+        <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center" id="populate">
+        	
+            
+            
+            
+            
+        </div>          
+    
+    
+    </div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

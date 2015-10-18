@@ -1,0 +1,283 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
+<script>
+$(document).ready(function() {
+    //document.addEventListener("deviceready", onDeviceReady, true);
+	/* 
+    $.ajax({
+		url:'http://www.diyreno.sg/promo/index.php/reno/loaddeals',
+		success: function(request)
+		{
+			$('#populate').html(request);
+		}
+	});**/
+		$.post('http://www.diyreno.sg/promo/index.php/reno/loadmerchants',{},function(request){$('#populate').html(request);});
+	//alert('test');      
+});
+	$(document).ajaxStop(function() {
+			$.mobile.loading('hide');
+			$.mobile.hidePageLoadingMsg();
+		});
+</script>
+
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed"><a href="index.html" data-ajax="false" data-icon="home" class="ui-btn-right">Home</a>
+		<h1>DIY RENO</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+      <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center" id="populate">
+                   <!--- <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+                    <a href="merchantdetail.html?catid=18" data-ajax="false"><img src="img/diyreno_icons/window.png" width="100%"/></a></td><td  width="33%" >
+                    <a href="merchantdetail.html?catid=24" data-ajax="false"><img src="img/diyreno_icons/wallcovering.png" width="100%"/></a></td><td  width="33%">
+                    <a href="merchantdetail.html?catid=35" data-ajax="false"><img src="img/diyreno_icons/upholstery.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center"  >
+                    <tr valign=top align=center><td width="33%"><a href="merchantdetail.html?catid=18">Window</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=24">Wall Covering</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=35">Upholstery</a></td>
+                    </tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="merchantdetail.html?catid=25" data-ajax="false">
+                    <img src="img/diyreno_icons/titles.png" width="100%" /></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=6" data-ajax="false">
+                    <img src="img/diyreno_icons/storage.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=36" data-ajax="false">
+                    <img src="img/diyreno_icons/steelwork.png" width="100%" /></a></td>
+                    </tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center">
+                    <tr valign=top align=center><td width="33%"><a href="merchantdetail.html?catid=25">Tiles/Stones</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=6">Storage</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=36">Steel Work</a></td>
+                    </tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="merchantdetail.html?catid=37" data-ajax="false"><img src="img/diyreno_icons/signage.png" width="100%" /></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=41" data-ajax="false"><img src="img/diyreno_icons/shutters.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=40" data-ajax="false"><img src="img/diyreno_icons/shadesandfilm.png" width="100%"/></a></td></tr>
+                    </table>
+                    </div>
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center"  >
+                    <tr valign=top align=center><td width="33%"><a href="merchantdetail.html?catid=37">Signage and Printing</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=41">Shutters/Gates</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=40">Shades And Film</a></td>
+                    </tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign="top"><td width="33%">
+  					<a href="merchantdetail.html?catid=5" data-ajax="false"><img src="img/diyreno_icons/security.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=11" data-ajax="false"><img src="img/diyreno_icons/pool.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=4" data-ajax="false"><img src="img/diyreno_icons/plumbing.png" width="100%"/></a>
+                    </td></tr>
+                    </table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="merchantdetail.html?catid=5">Security</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=11">Pool Services/Water Features</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=4">Plumbing</a></td>
+                    </tr></table>
+                    </div>  
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="merchantdetail.html?catid=34" data-ajax="false"><img src="img/diyreno_icons/pestcontrol.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=26" data-ajax="false"><img src="img/diyreno_icons/partitioning.png" width="100%"/></a></td><td width="33%">
+                    <a href="merchantdetail.html?catid=2" data-ajax="false"><img src="img/diyreno_icons/painting.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="merchantdetail.html?catid=34">Pest Control</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=26">Partitioning</a></td>
+                    <td width="33%"><a href="merchantdetail.html?catid=2">Painting</a></td>
+                    </tr></table>
+                    </div>  
+                       
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/officefurniture.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/movers.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/lightings.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Office Furnitures</a></td>
+                    <td width="33%"><a href="oct.html">Movers</a></td>
+                    <td width="33%"><a href="oct.html">Lightings</a></td>
+                    </tr></table>
+                    </div>    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/licensetiler.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/licensehacker.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/landscape.png" width="100%"/></a></td></tr></table>
+                    </div>  
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">License Tiler</a></td>
+                    <td width="33%"><a href="oct.html">License Hacker</a></td>
+                    <td width="33%"><a href="oct.html">Landscape</a></td>
+                    </tr></table>
+                    </div>  
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/kitichenwardrobe.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/kitchenbasin.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/homeauto.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Kitchen and Wardrobe System</a></td>
+                    <td width="33%"><a href="oct.html">Kitchen/Basin Worktop</a></td>
+                    <td width="33%"><a href="oct.html">Home Automation</a></td>
+                    </tr></table>
+                    </div>  
+                      
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/hardware.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/handyman.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/glassmirrors.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Hardwarem</a></td>
+                    <td width="33%"><a href="oct.html">Handy Man</a></td>
+                    <td width="33%"><a href="oct.html">Glass/Mirrors</a></td>
+                    </tr></table>
+                    </div>  
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/furnitures.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/flooringdecking.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/fengshui.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Furnitures</a></td>
+                    <td width="33%"><a href="oct.html">Flooring/Decking</a></td>
+                    <td width="33%"><a href="oct.html">Geomancy and Feng Shui</a></td>
+                    </tr></table>
+                    </div>  
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/electrician.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/electricalappliances.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/door.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Electrician</a></td>
+                    <td width="33%"><a href="oct.html">Electrical Appliances</a></td>
+                    <td width="33%"><a href="oct.html">Door</a></td>
+                    </tr></table>
+                    </div>  
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/designers.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/curtainblind.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/cleaners.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Interior Designers</a></td>
+                    <td width="33%"><a href="oct.html">Curtain and Blind</a></td>
+                    <td width="33%"><a href="oct.html">Cleaners</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top"><td width="33%">
+  					<a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/carpentry.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/bathroomtoilet.png" width="100%"/></a></td><td width="33%">
+                    <a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/architect.png" width="100%"/></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Carpentry</a></td>
+                    <td width="33%"><a href="oct.html">Bathroom and Toilet Sanitary</a></td>
+                    <td width="33%"><a href="oct.html">Architect</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center"  >
+                    <tr valign="top">
+                    <td width="33%"><a href="oct.html" data-ajax="false"><img src="img/diyreno_icons/aircon.png" width="100%" /></a>
+                    </td><td width="33%">
+  					</td><td width="33%"></td></tr></table>
+                    </div>
+                      
+					<div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="oct.html">Aircon</a></td><td width="33%"></td><td width="33%"></td>
+                    </tr></table>
+                    </div>     -->                  
+                      
+    
+    
+    </div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

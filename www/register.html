@@ -1,0 +1,216 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
+<script type="text/javascript" charset="utf-8">
+	  
+$(document).ready(function() {
+    // are we running in native app or in a browser?
+    window.isphone = false;
+    if(document.URL.indexOf("http://") === -1 
+        && document.URL.indexOf("https://") === -1) {
+        window.isphone = true;
+    }
+
+    if( window.isphone ) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    } else {
+        onDeviceReady();
+    }
+	$(document).ajaxStop(function() {
+		$.mobile.loading('hide');
+		$.mobile.hidePageLoadingMsg();
+	});
+});
+
+function onDeviceReady() {
+    // do everything here.
+	
+}
+
+function redirect(href)
+{
+	$('#infodiv').load(href,function(){
+		jQuery("html, body").animate({ scrollTop: 0 }, 0);
+		setatag();
+	}); 
+}
+	
+function setatag()
+{
+	$('#infodiv a').click(function(e) {
+		jQuery("html, body").animate({ scrollTop: 0 }, 0);
+		$('#infodiv').load($(this).attr('href'),function(){
+			setatag();
+		});
+		e.preventDefault();
+	});
+}
+
+$(function(){
+// part 1
+	$('#infodiv a').click(function(){
+		location.hash=$(this).attr('href').match(/(^.*)\./)[1]
+		return false
+	})
+// part 2
+	var originalTitle=document.title
+	function hashChange(){
+		var page=location.hash.slice(1)
+		if (page!=""){
+			$('#infodiv').load(page+".html #sub-content")
+			document.title=originalTitle+' – '+page
+		}
+	}
+// part 3
+	if ("onhashchange" in window){ // cool browser
+		$(window).on('hashchange',hashChange).trigger('hashchange')
+	}else{ // lame browser
+		var lastHash=''
+		setInterval(function(){
+			if (lastHash!=location.hash)
+				hashChange()
+			lastHash=location.hash
+		},100)
+	}
+})
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function call(number)
+{
+	//document.location.href = 'http://google.com';
+	window.open(number,'_system');
+}
+function register()
+{
+	$('.name, .username, .password, .repassword, .email, .reemail').css('color','#000');
+	if($('#name').val().trim() == '')
+	{
+		$('#name').val('').focus();
+		$('.name').css('color', '#F00');
+		return false;
+	}
+	if($('#username').val().trim() == '')
+	{
+		$('#username').val('').focus();
+		$('.username').css('color', '#F00');
+		return false;
+	}
+	if($('#password').val().trim() == '')
+	{
+		$('#password').val('').focus();
+		$('.password').css('color', '#F00');
+		return false;
+	}
+	if($('#repassword').val().trim() == '')
+	{
+		$('#repassword').val('').focus();
+		$('.repassword').css('color', '#F00');
+		return false;
+	}
+	if($('#password').val() != $('#repassword').val())
+	{
+		alert('Passwords do not match');
+		$('#password').val('').focus();
+		$('#repassword').val('');
+		$('.password').css('color', '#F00');
+		$('.repassword').css('color', '#F00');
+		return false;
+	}
+	
+	
+	
+	if($('#email').val().trim() == '')
+	{
+		$('#email').val('').focus();
+		$('.email').css('color', '#F00');
+		return false;
+	}
+	if($('#reemail').val().trim() == '')
+	{
+		$('#reemail').val('').focus();
+		$('.reemail').css('color', '#F00');
+		return false;
+	}
+	if($('#email').val() != $('#reemail').val())
+	{
+		alert('Emails do not match');
+		$('#reemail').val('');
+		$('#email').val('').focus();
+		$('.email').css('color', '#F00');
+		$('.reemail').css('color', '#F00');
+		return false;
+	}
+	
+	$.post('http://diyreno.sg/promo/index.php/reno/registermobile',{name:$('#name').val(),username:$('#username').val(),password:$('#password').val(),email:$('#email').val()},function(request)
+	{
+		$('#loadscript').html(request);
+	});
+}
+</script>
+<style>
+.my_icon_wrapper {
+        float: left; 
+        width: 80px; height: 80px;
+        text-align: center; 
+        vertical-align: middle; 
+}
+#loadscript{}
+</style>
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed"><a href="javascript:window.history.back()" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+		<h1>DIY RENO</h1> 
+	</div><!-- /header -->
+<div data-role="content">
+
+<div id="infodiv"> </div>
+<div id="loadscript"> </div>
+
+    <div class="ui-corner-all custom-corners">
+  <div class="ui-bar ui-bar-a">
+	<div style="text-align:center;margin-bottom:20px;"><img src="images/logo.png" width="60%"><br/></div>
+    <h3>User Registration</h3>
+  </div>
+  <div class="ui-body ui-body-a">
+  
+	<span class="name" style="font-size:14px;letter-spacing:1px;">NAME *</span>
+    <input type="text" id="name"/>
+	<span class="username" style="font-size:14px;letter-spacing:1px;">USERNAME *</span>
+    <input type="text" id="username"/>
+    <span class="password" style="font-size:14px;letter-spacing:1px;">PASSWORD *</span>
+    <input type="password" id="password"/>
+    <span class="repassword" style="font-size:14px;letter-spacing:1px;">CONFIRM PASSWORD *</span>
+    <input type="password" id="repassword"/>
+    <span class="email" style="font-size:14px;letter-spacing:1px;">EMAIL ADDRESS *</span>
+    <input type="email" id="email"/>
+    <span class="reemail" style="font-size:14px;letter-spacing:1px;">CONFIRM EMAIL ADDRESS *</span>
+    <input type="email" id="reemail"/>
+    <button class="ui-btn" onClick="register()">Register</button>
+
+</div>
+</div>
+    
+    
+</div>
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

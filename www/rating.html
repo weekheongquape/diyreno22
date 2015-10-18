@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="msapplication-tap-highlight" content="no" />
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
+<script type="text/javascript" charset="utf-8">
+	  
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+function submitreview()
+{
+	var value = window.localStorage.getItem("userid");
+	var sid = getParameterByName('sid');
+	jQuery.post('http://www.diyreno.sg/promo/index.php/reno/writereview123',
+	{
+		userid:value, 
+		sid:sid, 
+		rtitle:jQuery('#title').val(), 
+		rReview:jQuery('#review').val(), 
+		likes:jQuery('#likes').val(), 
+		dislikes:jQuery('#dislikes').val(), 
+		val1:jQuery('#service option:selected').html(), 
+		val2:jQuery('#quality option:selected').html(), 
+		val3:jQuery('#value option:selected').html(), 
+		val4:jQuery('#price option:selected').html()
+	},
+	function(request)
+	{
+		alert(request);
+	});
+}
+	$(document).ready(function(e) {
+		$('#companyimage').attr('src',getParameterByName('image'));
+		$('#companytitle').html(getParameterByName('name'));
+	});
+</script>
+<style>
+.my_icon_wrapper {
+	float: left;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	vertical-align: middle;
+}
+#loadscript {
+	display: none;
+}
+</style>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header" data-position="fixed"><a href="javascript:window.history.back()" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+    <h1>DIY RENO</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div id="infodiv"> </div>
+    <div id="loadscript"> </div>
+    
+    <div class="ui-corner-all custom-corners">
+  	<img style="max-width:100%;magin-bottom:20px;" id="companyimage"/>
+    <h3 class="ui-bar ui-bar-a" id="companytitle"></h3>
+  <div class="ui-bar ui-bar-a">
+    <h3>Add your review...</h3>
+  </div>
+  <div class="ui-body ui-body-a">
+    
+    <table style="width:100%">
+      <tr>
+        <td colspan="2">Title</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="text" id="title"/></td>
+      </tr>
+      <tr>
+        <td colspan="2">Review</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+            <textarea id="review"></textarea>
+    	</td>
+      </tr>
+      <tr>
+      	<td colspan="2"><h3>Rating <i>(1 - 10)</i>:</h3></td>
+      </tr>
+      <tr>
+        <td><span>Service</span></td>
+        <td>
+         <select id="service">
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><span>Quality</span></td>
+        <td>
+         <select id="quality">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><span>Value</span></td>
+        <td>
+         <select id="value">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><span>Price</span></td>
+        <td>
+         <select id="price">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Likes</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="text" id="likes"/></td>
+      </tr>
+      <tr>
+        <td colspan="2">Dislikes</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="text" id="dislikes"/></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button onClick="submitreview()" class="ui-btn">Submit Review</button></td>
+      </tr>
+    </table>
+    
+      </div>
+      </div>
+    
+  </div>
+  <div data-role="footer" data-position="fixed">
+    <h4>Copyright 2014 DIY RENO</h4>
+  </div>
+  <!-- /footer --> 
+  
+</div>
+<!-- /page --> 
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

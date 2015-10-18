@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
+<script>
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	
+	function call(number)
+	{
+		//document.location.href = 'http://google.com';
+		window.open(number,'_system');
+	}
+	
+	function shortlist(val)
+	{/***********/
+		var value = window.localStorage.getItem("userid");
+		if(value>0)
+		{
+			$.post('http://www.diyreno.sg/promo/index.php/reno/shortlistmember',{product_id:val,member_id:value});
+			alert('Item shortlisted');
+			return false;
+		}
+		else
+		{
+			//alert('Please sign in first');
+			window.location.replace("login.html");
+			return false;			
+		}	  
+	}
+	
+	function load1(val1)
+	{
+		$('#infodiv').load(val1,function(){
+			
+			setatag();
+		});
+		return false;
+	}
+	  
+$(document).ready(function(){
+	$("#infodiv").load( "http://www.diyreno.sg/promo/index.php/reno/promotionsmobile/"+getParameterByName('catid'),function(){
+	
+	
+		jQuery("html, body").animate({ scrollTop: 0 }, 0);
+		
+		setatag();
+	
+	});
+});	  
+	
+function redirect(href)
+{
+	window.location.href="redirect.html?url="+href;
+	/*$('#infodiv').load(href,function(){
+		jQuery("html, body").animate({ scrollTop: 0 }, 0);
+		setatag();
+	}); */
+}
+	
+function setatag()
+{
+	$('#infodiv a').click(function(e) {
+		jQuery("html, body").animate({ scrollTop: 0 }, 0);
+		/*$('#infodiv').load($(this).attr('href'),function(){
+			setatag();
+		});*/
+		window.location.href="redirect.html?url="+$(this).attr('href');
+		e.preventDefault();
+	});
+}
+
+$(function(){
+// part 1
+	$('#infodiv a').click(function(){
+		location.hash=$(this).attr('href').match(/(^.*)\./)[1]
+		return false
+	})
+// part 2
+	var originalTitle=document.title
+	function hashChange(){
+		var page=location.hash.slice(1)
+		if (page!=""){
+			$('#infodiv').load(page+".html #sub-content")
+			document.title=originalTitle+' – '+page
+		}
+	}
+// part 3
+	if ("onhashchange" in window){ // cool browser
+		$(window).on('hashchange',hashChange).trigger('hashchange')
+	}else{ // lame browser
+		var lastHash=''
+		setInterval(function(){
+			if (lastHash!=location.hash)
+				hashChange()
+			lastHash=location.hash
+		},100)
+	}
+})
+
+</script>
+<style>
+.my_icon_wrapper {
+        float: left; 
+        width: 80px; height: 80px;
+        text-align: center; 
+        vertical-align: middle; 
+}
+</style>
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed"><a href="#" onClick="window.history.back();" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+		<h1>DIY RENO</h1> 
+	</div><!-- /header -->
+<div data-role="content">
+
+<div id="infodiv"> </div>
+
+
+</div>
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

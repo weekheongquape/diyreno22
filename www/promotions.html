@@ -1,0 +1,297 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.4.css">
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
+<script>
+$(document).ready(function() {
+    //document.addEventListener("deviceready", onDeviceReady, true);
+	/* 
+    $.ajax({
+		url:'http://www.diyreno.sg/promo/index.php/reno/loaddeals',
+		success: function(request)
+		{
+			$('#populate').html(request);
+		}
+	});**/
+		$.post('http://www.diyreno.sg/promo/index.php/reno/loaddeals',{},function(request){$('#populate').html(request);});
+	//alert('test');      
+});
+	$(document).ajaxStop(function() {
+			$.mobile.loading('hide');
+			$.mobile.hidePageLoadingMsg();
+		});
+</script>
+</head>
+<body>
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed"><a data-ajax="false" href="index.html" data-icon="home" class="ui-btn-right">Home</a>
+		<h1>DIY RENO</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+      <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center" id="populate">
+                  <!------ <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+                    <a href="promotiondetail.html?catid=17" data-ajax="false"><img src="img/diyreno_promo/window.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=19" data-ajax="false"><img src="img/diyreno_promo/wardrobe.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=23" data-ajax="false"><img src="img/diyreno_promo/wallcovering.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=17" data-ajax="false">Window</a></td>
+                    <td width="33%"><a data-ajax="false" href="promotiondetail.html?catid=19">Kitchen and Wardrobe System</a></td>
+                    <td width="33%"><a data-ajax="false" href="promotiondetail.html?catid=23">Wall Covering</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=34" data-ajax="false"><img src="img/diyreno_promo/upholstery.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=24" data-ajax="false"><img src="img/diyreno_promo/tiles.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=5" data-ajax="false"><img src="img/diyreno_promo/storage.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=34">Upholstery</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=24">Tiles/Stones</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=5">Storage</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=35" data-ajax="false"><img src="img/diyreno_promo/steelwork.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=36" data-ajax="false"><img src="img/diyreno_promo/signage.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=40" data-ajax="false"><img src="img/diyreno_promo/shutters.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=35">Steel Work</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=36">Signage and Painting</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=40">Shutters/Gates</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=39" data-ajax="false"><img src="img/diyreno_promo/shadesandfilm.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=4" data-ajax="false"><img src="img/diyreno_promo/security.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=10" data-ajax="false"><img src="img/diyreno_promo/poolservices.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=39" data-ajax="false">Shades and Film</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=4" data-ajax="false">Security</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=10" data-ajax="false">Pool Services/Water Feature</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=3" data-ajax="false"><img src="img/diyreno_promo/plumbing.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=33" data-ajax="false"><img src="img/diyreno_promo/pestcontrol.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=25" data-ajax="false"><img src="img/diyreno_promo/partitioning.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=3" data-ajax="false">Plumbing</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=33" data-ajax="false">Pest Control</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=25" data-ajax="false">Partitioning</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=1" data-ajax="false"><img src="img/diyreno_promo/painting.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=37" data-ajax="false"><img src="img/diyreno_promo/officefurniture.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=6" data-ajax="false"><img src="img/diyreno_promo/movers.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=1" data-ajax="false">Painting</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=37" data-ajax="false">Office Furniture</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=6" data-ajax="false">Movers</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=38" data-ajax="false"><img src="img/diyreno_promo/lightings.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=15" data-ajax="false"><img src="img/diyreno_promo/licensetiler.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=14" data-ajax="false"><img src="img/diyreno_promo/licensehacker.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=38" data-ajax="false">Lightings</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=15" data-ajax="false">License Tiler</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=14" data-ajax="false">License Hacker</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                 	<div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=11" data-ajax="false"><img src="img/diyreno_promo/landscape.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=19" data-ajax="false"><img src="img/diyreno_promo/kitchen.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=27" data-ajax="false"><img src="img/diyreno_promo/homeautomation.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=11" data-ajax="false">Landscape</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=19" data-ajax="false">Kitchen and Wardrobe Systems</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=27" data-ajax="false">Home Automation</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=26" data-ajax="false"><img src="img/diyreno_promo/hardware.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=8" data-ajax="false"><img src="img/diyreno_promo/handyman.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=30" data-ajax="false"><img src="img/diyreno_promo/glass.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=26" data-ajax="false">Hardware/ Software</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=8" data-ajax="false">Handy Man</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=30" data-ajax="false">Glass/Mirrors</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=21" data-ajax="false"><img src="img/diyreno_promo/furnitures.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=20" data-ajax="false"><img src="img/diyreno_promo/flooring.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=9" data-ajax="false"><img src="img/diyreno_promo/fengshui.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=21" data-ajax="false">Furnitures</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=20" data-ajax="false">Flooring/Decking</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=9" data-ajax="false">Geomancy and Feng Shui</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=2" data-ajax="false"><img src="img/diyreno_promo/electrician.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=28" data-ajax="false"><img src="img/diyreno_promo/electricalappliances.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=16" data-ajax="false"><img src="img/diyreno_promo/door.png" width="100%" /></a></td></tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=2" data-ajax="false">Electrician</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=28" data-ajax="false">Electrical Appliances</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=16" data-ajax="false">Door</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=13" data-ajax="false"><img src="img/diyreno_promo/designer.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=22" data-ajax="false"><img src="img/diyreno_promo/curtain.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=7" data-ajax="false"><img src="img/diyreno_promo/cleaners.png" width="100%" /></a></td></tr></table>
+                    </div><div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=13" data-ajax="false">Interior Designers</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=22" data-ajax="false">Curtain and Blind</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=7" data-ajax="false">Cleaners</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td>
+  					<a href="promotiondetail.html?catid=18" data-ajax="false"><img src="img/diyreno_promo/carpentry.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=29" data-ajax="false"><img src="img/diyreno_promo/bathroom.png" width="100%" /></a></td><td width="33%">
+                    <a href="promotiondetail.html?catid=12" data-ajax="false"><img src="img/diyreno_promo/architect.png" width="100%" /></a></td></tr></table>
+                    </div><div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=18" data-ajax="false">Carpentry</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=29" data-ajax="false">Bathroom and Toilet Sanitary</a></td>
+                    <td width="33%"><a href="promotiondetail.html?catid=12" data-ajax="false">Art</a></td>
+                    </tr></table>
+                    </div> 
+                    
+                    
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="10" align="center" >
+                    <tr valign=top align=center><td width=33%><a href="promotiondetail.html?catid=32" data-ajax="false"><img src="img/diyreno_promo/aircon.png" width="100%" /></a>
+                    </td><td width="33%">
+  					</td><td width="33%">
+  					</td>
+                    </tr></table>
+                    </div>
+                    
+                    <div align="center" style="margin-bottom:5px; margin-right:5px; margin-left:5px; text-align:center">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" >
+                    <tr valign=top align=center><td width="33%"><a href="promotiondetail.html?catid=32" data-ajax="false">Aircon</a></td><td width="33%"></td><td width="33%"></td>
+                    </tr></table>----------->
+                    </div>
+                
+    
+    
+    </div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Copyright 2014 DIY RENO</h4>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>
